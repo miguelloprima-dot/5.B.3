@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libro</title>
+    <style>
+        #titulo1{
+            margin-top: 50px;
+            margin-left: 900px;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="titulo1">Libro</h1>
+    <form action="">
+        <p><label for="">Titulo:</label><input type="text" id="titulo" name="titulo"></p>
+        <p><label for="">Precio:</label><input type="text" id="precio" name="precio"></p>
+        <p><label for="">Isbn:</label><input type="text" id="isbn" name="isbn"></p>
+        <p><label for="">Autor:</label><input type="text" id="autor" name="autor"></p>
+    </form>
+    <script>
+fetch('libros.json')
+  .then(response => response.json())
+  .then(libros =>{ document.getElementById("titulo").value = libros.titulo,
+  document.getElementById("precio").value = libros.precio,
+   document.getElementById("isbn").value = libros.isbn,
+    document.getElementById("autor").value = libros.autor
+  });
+    </script>
+</body>
+</html>

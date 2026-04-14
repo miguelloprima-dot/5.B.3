@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5.B.3</title>
+    <style>
+        #titulo{
+            margin-top: 50px;
+            margin-left: 670px;
+            
+        }
+    </style>
+</head>
+<body>
+    <h1 id="titulo">Cliente</h1>
+    <form action="">
+        <p><label for="">Nombre:</label><input type="text" name="nombre" id="nombre"></p>
+        <p>
+  <label for="apellidos">Apellidos: 
+    <input type="text" name="apellidos" id="apellidos">
+  </label>
+</p>
+
+<p>
+  <label for="edad">Edad: 
+    <input type="number" name="edad" id="edad">
+  </label>
+</p>
+
+<p>
+  <label for="suscrito">Suscrito: 
+    <input type="checkbox" name="suscrito" id="suscrito">
+  </label>
+</p>
+<label for="">Calle: 
+      <input type="text" name="calle" id="calle">
+    </label>
+  </p>
+  <p>
+    <label for="">Aficiones: 
+      <input type="text" name="aficiones" id="aficiones">
+    </label>
+  </p>
+    </form>
+    <script>
+        fetch('miCliente.json')
+  .then(response => response.json())
+  .then(miCliente =>{ document.getElementById("nombre").value = miCliente.nombre,
+document.getElementById("apellidos").value = miCliente.apellidos,
+document.getElementById("edad").value = miCliente.edad
+if(miCliente.suscrito){
+    document.getElementById("suscrito").setAttribute("checked","checked")
+}
+document.getElementById("calle").value = miCliente.dirección.calle;
+for ( i=0; i<miCliente.aficiones.length; i++){
+    if(i== miCliente.aficiones.length){
+        document.getElementById("aficiones").value += miCliente.aficiones[i]
+    }
+    document.getElementById("aficiones").value += miCliente.aficiones[i]+","
+}
+  });
+        //alert(miCliente.apellidos);
+        //alert(miCliente.aficiones[1]);
+          alert(miCliente.dirección.calle);
+          
+    </script>
+    <a href="">Mi ejemplo</a>
+</body>
+</html>
